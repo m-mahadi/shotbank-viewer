@@ -109,8 +109,20 @@ document.onkeydown = (e) => {
   }
 };
 
-fetch("shots.json").then((r) => r.json()).then((d) => {
+function boot(d) {
   DATA = d;
   buildChips();
   applyFilters();
-});
+}
+// APK build inlines the manifest as window.__SHOTS__ (a <script> works on
+// file:// where fetch() is blocked). The web/PWA build fetches it instead.
+if (window.__SHOTS__) {
+  boot(window.__SHOTS__);
+} else {
+  fetch("shots.json")
+    .then((r) => r.json())
+    .then(boot)
+    .catch(() => {
+      document.getElementById("grid").innerHTML = '<div class="empty">Could not load shots.json</div>';
+    });
+}
