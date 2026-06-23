@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shotbank — shot inspiration</title>
+  <meta name="theme-color" content="#0a0a0b" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>🎬</text></svg>" />
+</head>
+<body>
+  <header>
+    <div class="row">
+      <span class="brand">Shot<b>bank</b></span>
+      <span class="count" id="count"></span>
+      <input class="search" id="search" placeholder="Search notes, tags, film…" autocomplete="off" />
+      <span class="spacer"></span>
+      <button class="btn" id="inspire">🎲 Inspire me</button>
+    </div>
+    <div class="chips" id="chips"></div>
+  </header>
+  <main class="grid" id="grid"></main>
+
+  <div class="lb" id="lb">
+    <div class="stage">
+      <button class="close" id="lbClose">✕</button>
+      <button class="nav prev" id="lbPrev">‹</button>
+      <img id="lbImg" alt="" />
+      <button class="nav next" id="lbNext">›</button>
+    </div>
+    <aside class="side">
+      <div>
+        <h2 id="lbFilm"></h2>
+        <div class="sub" id="lbSub"></div>
+      </div>
+      <div class="field"><div class="k">Rating</div><div class="v stars" id="lbStars"></div></div>
+      <div class="field" id="lbTagsF"><div class="k">Tags</div><div class="v" id="lbTags"></div></div>
+      <div class="field" id="lbNotesF"><div class="k">Notes</div><div class="v" id="lbNotes"></div></div>
+      <div class="field" id="lbRecF"><div class="k">How to recreate</div><div class="v" id="lbRec"></div></div>
+      <div class="actions">
+        <button class="btn2" id="lbRandom">🎲 Random</button>
+        <button class="btn2" id="lbOpen">↗ Open image</button>
+      </div>
+    </aside>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+  </script>
+</body>
+</html>
