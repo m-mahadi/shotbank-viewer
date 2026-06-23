@@ -34,8 +34,25 @@ to `scripts/_work/` for review. Curation is otherwise manual.
 
 ## Install on a phone
 
-Open the deployed URL (GitHub Pages), then **Add to Home Screen**. After one
-online visit the service worker caches every shot for offline use.
+**Web / PWA:** open the deployed URL (GitHub Pages), then **Add to Home
+Screen**. After one online visit the service worker caches every shot offline.
+
+**Android APK (fully offline):** download from
+[Releases](https://github.com/m-mahadi/shotbank-viewer/releases) — every shot is
+bundled inside the app, no network needed.
+
+### Rebuild the APK
+
+`android/` is a minimal WebView wrapper. It bundles `docs/` into the app and
+needs only the Android SDK (build-tools 36) + JDK 17:
+
+```bash
+cp -r docs/* android/app/src/main/assets/      # bundle the latest shots
+cd android && ./gradlew assembleDebug           # → app/build/outputs/apk/debug/app-debug.apk
+```
+
+`android/local.properties` must point at your SDK with **forward slashes**
+(`sdk.dir=C:/Users/you/AppData/Local/Android/Sdk`).
 
 ## Keyboard
 
